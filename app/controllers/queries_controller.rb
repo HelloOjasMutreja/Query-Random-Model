@@ -3,7 +3,7 @@ class QueriesController < ApplicationController
 
   # GET /queries or /queries.json
   def index
-    @queries = Query.all
+    @queries = Query.all.order("created_at DESC")
   end
 
   # GET /queries/1 or /queries/1.json
@@ -12,7 +12,7 @@ class QueriesController < ApplicationController
 
   # GET /queries/new
   def new
-    @query = Query.new
+    @query = current_user.queries.build
   end
 
   # GET /queries/1/edit
@@ -21,7 +21,7 @@ class QueriesController < ApplicationController
 
   # POST /queries or /queries.json
   def create
-    @query = Query.new(query_params)
+    @query = current_user.queries.build(query_params)
 
     respond_to do |format|
       if @query.save
