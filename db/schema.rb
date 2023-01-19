@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_17_182009) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_18_181539) do
+  create_table "options", force: :cascade do |t|
+    t.string "content"
+    t.integer "query_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["query_id"], name: "index_options_on_query_id"
+  end
+
   create_table "queries", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -33,5 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_182009) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "options", "queries"
   add_foreign_key "queries", "users"
 end

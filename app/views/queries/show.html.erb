@@ -1,6 +1,10 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @query %>
+
+<h6>Options</h6>
+<%= link_to "New Option", new_query_option_path(@query) %>
+<% @query.options.each do |option| %>
+  <p><%= option.content %></p>
+<% end %>
 
 <div>
   <%= link_to "Edit this query", edit_query_path(@query) %> |

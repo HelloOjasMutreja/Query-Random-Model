@@ -1,0 +1,6 @@
+<%= form_with(model: [@query, @option], local: true, url: new_query_option_path(@query)) do |form| %>
+  <%= form.hidden_field :query_id %>
+  <%= form.label :content %>
+  <%= form.text_field :content %>
+  <%= form.submit %>
+<% end %>
