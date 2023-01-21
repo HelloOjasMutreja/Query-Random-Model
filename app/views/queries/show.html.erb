@@ -6,6 +6,8 @@
   <p><%= option.content %></p>
 <% end %>
 
+<%= link_to "Random Option", random_query_options_path(@query), class: "btn btn-primary" %>
+
 <div>
   <%= link_to "Edit this query", edit_query_path(@query) %> |
   <%= link_to "Back to queries", queries_path %>

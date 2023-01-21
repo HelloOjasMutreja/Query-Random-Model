@@ -18,6 +18,11 @@ class OptionsController < ApplicationController
       end
     end
     end
+
+    def random
+        @query = Query.find(params[:query_id])
+        @option = @query.options.sample
+    end    
   
     private
   

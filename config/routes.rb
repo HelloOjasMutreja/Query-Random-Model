@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
   resources :queries do
-    resources :options, only: [:new, :create]
+    resources :options, only: [:new, :create] do
+      get :random, on: :collection
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
